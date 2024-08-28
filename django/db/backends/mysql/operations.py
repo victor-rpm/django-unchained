@@ -327,8 +327,10 @@ class DatabaseOperations(BaseDatabaseOperations):
         return value
 
     def convert_datetimefield_value(self, value, expression, connection):
-        if value is not None:
+        if value is not None and not isinstance(value, str):
             value = timezone.make_aware(value, self.connection.timezone)
+        elif isinstance(value, str):
+            logger.warning(f"Unable to convert {value} to datetimefield. Processed as string . . .")
         return value
 
     def convert_uuidfield_value(self, value, expression, connection):
