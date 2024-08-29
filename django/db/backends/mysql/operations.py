@@ -10,7 +10,7 @@ from django.utils.encoding import force_str
 from django.utils.regex_helper import _lazy_re_compile
 import logging
 
-logger = logging.getlogger(__name__)
+logger = logging.getLogger(__name__)
 
 class DatabaseOperations(BaseDatabaseOperations):
     compiler_module = "django.db.backends.mysql.compiler"
